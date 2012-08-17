@@ -900,7 +900,7 @@ public class MavenCli
             transferListener = new BatchModeMavenTransferListener( System.out );
         }
 
-        ExecutionListener executionListener = new ExecutionEventLogger( logger );
+        ExecutionListener executionListener = new TimedExecutionEventLogger( logger );
         executionListener = eventSpyDispatcher.chainListener( executionListener );
 
         String alternatePomFile = null;
@@ -1071,7 +1071,7 @@ public class MavenCli
         }
 
         systemProperties.putAll( System.getProperties() );
-        
+
         // ----------------------------------------------------------------------
         // Properties containing info about the currently running version of Maven
         // These override any corresponding properties set on the command line
